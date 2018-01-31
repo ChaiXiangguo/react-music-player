@@ -4,6 +4,7 @@ import { MUSIC_LIST } from './config/config';
 import { randomRange } from './utils/util';
 let PubSub = require('pubsub-js');
 
+import Home from './page/home';
 import PlayerPage from './page/player';
 import listPage from './page/list';
 import Logo from './components/logo'
@@ -17,7 +18,7 @@ let App = React.createClass({
 			useStateClassSkin: true
 		});
 
-		this.playMusic(this.state.musicList[0]);
+		// this.playMusic(this.state.musicList[0]);
 		
 		$("#player").bind($.jPlayer.event.ended, (e) => {
 			this.playWhenEnd();
@@ -119,7 +120,8 @@ let Root = React.createClass({
 	    return (
 		    <Router history={hashHistory}>
 		        <Route path="/" component={App}>
-		            <IndexRoute component={PlayerPage}/>
+		            <IndexRoute component={Home}/>
+		            <Route path="/list" component={PlayerPage} />
 		            <Route path="/list" component={listPage} />
 		        </Route>
 		    </Router>

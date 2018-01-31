@@ -3,7 +3,7 @@ export const MUSIC_LIST = [
 		id: 1,
 		title: '天使中的魔鬼',
 		artist: '田馥甄',
-		file: 'http://oj4t8z2d5.bkt.clouddn.com/%E9%AD%94%E9%AC%BC%E4%B8%AD%E7%9A%84%E5%A4%A9%E4%BD%BF.mp3',
+		file: 'http://fs.w.kugou.com/201801251550/5ad18cfac8d2bc9d61c76a1b42247e32/G059/M02/17/1D/ew0DAFdr9KmAf5GnADSkTnjFCm0437.mp3',
 		cover: 'http://oj4t8z2d5.bkt.clouddn.com/%E9%AD%94%E9%AC%BC%E4%B8%AD%E7%9A%84%E5%A4%A9%E4%BD%BF.jpg'
 	}, {
 		id: 2,
