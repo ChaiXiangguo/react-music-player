@@ -6,7 +6,7 @@ let ImaFigure = React.createClass({
            <div>
               <img src={this.props.data.imageUrl}/>
               <span>
-                <h2>ww</h2>
+                <h2>{this.props.data.title}</h2>
               </span>
            </div>
         )

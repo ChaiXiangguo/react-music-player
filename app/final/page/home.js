@@ -1,8 +1,8 @@
 import React from 'react';
 import ImaFigure from '../components/imaFigure';
 var imageData = require('../data/imageData.json') 
-imageDatas = (function genImageUrl(imgArr) {
-  for (var i = 0; i < im.length; i++) {
+var imageDatas = (function genImageUrl(imgArr) {
+  for (var i = 0; i < imgArr.length; i++) {
     imgArr[i].imgUrl = '../images/' + imgArr[i].fileName
   }
   return imgArr
@@ -10,8 +10,8 @@ imageDatas = (function genImageUrl(imgArr) {
 let Home = React.createClass({
     render() {
       var imaFigures = []
-      imageDatas.forEach(element => {
-        imaFigure.push(<ImaFigure data={element}/>)
+      imageDatas.forEach((element, key) => {
+        imaFigures.push(<ImaFigure data={element} key={key}/>)
       });
       return (
         <section className="stage">
