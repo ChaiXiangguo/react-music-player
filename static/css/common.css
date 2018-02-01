@@ -220,3 +220,24 @@
     opacity:0.9;
     z-index: -1
 }
+.left-instructions{
+  position: absolute;
+  z-index: 100;
+  height: 60px;
+  width:100px;
+  
+}
+/*.right-instructions{
+     position: absolute;
+  z-index: 100;
+  height: 70px;
+  width:100px;
+  background-size: 224px auto
+  position: absolute;
+  z-index: 100;
+  background: url(/static/images/str.jpg) no-repeat;   
+  height: 165px;
+  width:224px;
+  background-position:-100px -90px;
+  background-size: 224px auto
+}*/

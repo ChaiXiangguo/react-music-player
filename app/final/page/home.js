@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ImaFigure from '../components/imaFigure';
+var FontAwesome = require('react-fontawesome');
 // React.initializeTouchEvents(true)
 var imageData = require('../data/imageData.json')
 var imgsFigures = (function genImageUrl(imgArr) {
@@ -134,6 +135,9 @@ let Home = React.createClass({
         <section className="img-sec" >
           {imgsArrangeArrs}
           <div className="bac-haden"></div>
+          <FontAwesome className='left-instructions' name='rocket' />
+          <FontAwesome className="left-instructions" name='rocket' />
+          
         </section>
       </div>
     )
