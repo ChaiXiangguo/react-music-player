@@ -24,6 +24,7 @@
     "pubsub-js": "^1.5.4",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
+    "react-gesture": "0.0.5",
     "react-hot-loader": "^3.0.0-beta.2",
     "react-router": "^2.0.0"
   },
