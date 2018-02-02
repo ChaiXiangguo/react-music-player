@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ImaFigure from '../components/imaFigure';
+import ContronllerUnit from '../components/contronllerUnit';
 var FontAwesome = require('react-fontawesome');
 // React.initializeTouchEvents(true)
 var imageData = require('../data/imageData.json')
@@ -17,6 +18,9 @@ let Home = React.createClass({
       right: 0,
       zIndex: 0,
       filter: 'grayscale(0)'
+    },
+    centerarrows :{
+      top: 0
     },
     otherPos: {
       left: 0,
@@ -93,8 +97,11 @@ let Home = React.createClass({
       halfImgH = Math.ceil(imgH / 2)
     this.Constant.centerPos = {
       left: halfStageW - halfImgW,
-      top: halfStageH - halfImgH,
+      top: halfStageH - halfImgH - 50,
       zIndex: 10
+    }
+    this.Constant.centerarrows = {
+      top: halfStageH + imgH + 20
     }
     this.Constant.arrangeXS = halfStageW - halfImgW
     this.Constant.arrangeXB = stageW - halfImgW
@@ -134,10 +141,21 @@ let Home = React.createClass({
       <div onTouchStart={this.imgTouchStart} onTouchEnd={this.imgTouchEnd} className="stage" ref="stage">
         <section className="img-sec" >
           {imgsArrangeArrs}
-          <div className="bac-haden"></div>
-          <FontAwesome className='left-instructions' name='rocket' />
-          <FontAwesome className="left-instructions" name='rocket' />
-          
+          <div className="bac-haden bac-col"></div>
+          <div className="menu-indicate">
+            <div className="indicate-box">
+            <FontAwesome size="4x" name='chevron-left' />
+            <ContronllerUnit/>
+            <ContronllerUnit/>
+            <ContronllerUnit/>
+            <ContronllerUnit/>
+            <ContronllerUnit/>
+            <ContronllerUnit/>
+            <ContronllerUnit/>
+            <ContronllerUnit/>
+            <FontAwesome size="4x" name='chevron-right' />
+            </div>
+          </div> 
         </section>
       </div>
     )
