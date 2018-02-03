@@ -123,6 +123,14 @@ let Home = React.createClass({
       this.rearrange(this.monmentImgIndex)
     }
   },
+  contronCli(i) {
+    if (i) {
+      --this.monmentImgIndex < 0 ? this.monmentImgIndex = 7 : this.monmentImgIndex
+    } else {
+      ++this.monmentImgIndex > 7 ? this.monmentImgIndex = 0 : this.monmentImgIndex
+    }
+    this.rearrange(this.monmentImgIndex)
+  },
   render() {
     var imgsArrangeArrs = []
     imgsFigures.forEach(function (element, key) {
@@ -144,7 +152,7 @@ let Home = React.createClass({
           <div className="bac-haden bac-col"></div>
           <div className="menu-indicate">
             <div className="indicate-box">
-            <FontAwesome size="4x" name='chevron-left' />
+            <FontAwesome onClick={this.contronCli.bind(this, 0)} className="contron-style" size="4x" name='chevron-left' />
             <ContronllerUnit/>
             <ContronllerUnit/>
             <ContronllerUnit/>
@@ -153,7 +161,7 @@ let Home = React.createClass({
             <ContronllerUnit/>
             <ContronllerUnit/>
             <ContronllerUnit/>
-            <FontAwesome size="4x" name='chevron-right' />
+            <FontAwesome onClick={this.contronCli.bind(this, 1)} className="contron-style" size="4x" name='chevron-right' />
             </div>
           </div> 
         </section>

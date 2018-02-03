@@ -233,10 +233,18 @@
 .indicate-box{
     width: 90%;
     margin: 0 auto;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content:space-around;
+    align-items:center;
+    align-content:center
+}
+.contron-style{
+    flex-grow: 0
 }
 @media (min-width: 442px) {
     .menu-indicate{
-        bottom: 150px
+        bottom: 100px
     }
 	.bac-col{
         display: none
