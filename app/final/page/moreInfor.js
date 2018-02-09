@@ -16,8 +16,8 @@ let moreInfor = React.createClass({
               <h2>爱我就养我</h2>
             </div>
             <div className="button-part">
-              <input className="button-part" type="button" value="给钱"/>
-              <input className="button-part" type="button" value="给吃的"/>
+              <input className="button-money" type="button" value="给钱"/>
+              <input className="button-eat" type="button" value="给吃的"/>
             </div>
           </div>
           <div className="foot-infor"></div>
