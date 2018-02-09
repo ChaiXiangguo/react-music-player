@@ -1,5 +1,5 @@
 import React, { render } from 'react';
-import { Router, IndexRoute, Link, Route, browserHistory, hashHistory} from 'react-router';
+import { Router, IndexRoute, Link, Route, browserHistory, hashHistory, IndexRedirect } from 'react-router';
 import { MUSIC_LIST } from './config/config';
 import { randomRange } from './utils/util';
 let PubSub = require('pubsub-js');
@@ -8,7 +8,7 @@ import Home from './page/home';
 import PlayerPage from './page/player';
 import listPage from './page/list';
 import Logo from './components/logo'
-
+import MoreInfor from './page/moreInfor'
 
 let App = React.createClass({
 	componentDidMount() {
@@ -19,7 +19,7 @@ let App = React.createClass({
 		});
 
 		// this.playMusic(this.state.musicList[0]);
-		
+
 		$("#player").bind($.jPlayer.event.ended, (e) => {
 			this.playWhenEnd();
 		});
@@ -70,7 +70,7 @@ let App = React.createClass({
 		if (this.state.repeatType === 'random') {
 			let index = this.findMusicIndex(this.state.currentMusitItem);
 			let randomIndex = randomRange(0, this.state.musicList.length - 1);
-			while(randomIndex === index) {
+			while (randomIndex === index) {
 				randomIndex = randomRange(0, this.state.musicList.length - 1);
 			}
 			this.playMusic(this.state.musicList[randomIndex]);
@@ -82,7 +82,7 @@ let App = React.createClass({
 	},
 	playNext(type = 'next') {
 		let index = this.findMusicIndex(this.state.currentMusitItem);
-		if (type === 'next') {		
+		if (type === 'next') {
 			index = (index + 1) % this.state.musicList.length;
 		} else {
 			index = (index + this.state.musicList.length - 1) % this.state.musicList.length;
@@ -105,26 +105,36 @@ let App = React.createClass({
 			currentMusitItem: item
 		});
 	},
-    render() {
-        return (
-            <div className="container">
-            	{/* <Logo></Logo> */}
-            	{React.cloneElement(this.props.children, this.state)}
-            </div>
-        );
-    }
+	render() {
+		return (
+			<div>
+				<nav className="title-box">
+					<ul className="menu-style">
+						<li>联系我</li>
+						<li>导航</li>
+					</ul>
+				</nav>
+				<div className="container">
+					{/* <Logo></Logo> */}
+					{React.cloneElement(this.props.children, this.state)}
+				</div>
+			</div>
+		);
+	}
 });
 
 let Root = React.createClass({
 	render() {
-	    return (
-		    <Router history={hashHistory}>
-		        <Route path="/" component={App}>
-		            <IndexRoute component={Home}/>
-		            <Route path="/list" component={PlayerPage} />
-		            <Route path="/list" component={listPage} />
-		        </Route>
-		    </Router>
+		return (
+			<Router history={hashHistory}>
+				<Route path="/" component={App}>
+					<IndexRedirect to="/page" />
+					<Route path="/page" component={Home}/>
+					<Route path="/about" component={MoreInfor}/>
+					<Route path="/list" component={PlayerPage} />
+					<Route path="/list" component={listPage} />
+				</Route>
+			</Router>
 		);
 	}
 });
