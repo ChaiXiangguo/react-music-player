@@ -9,7 +9,15 @@ import PlayerPage from './page/player';
 import listPage from './page/list';
 import Logo from './components/logo'
 import MoreInfor from './page/moreInfor'
-
+import Blog from './page/blog'
+import Developer from './page/developer'
+import Download from './page/download'
+import Literature from './page/literature'
+import Music from './page/music'
+import Recomend from './page/Recomend'
+import User from './page/user'
+import Uttearance from './page/Uttearance'
+console.log('-------------',MoreInfor,'------------', Blog,'---------------')
 let App = React.createClass({
 	componentDidMount() {
 		$("#player").jPlayer({
@@ -128,10 +136,16 @@ let Root = React.createClass({
 		return (
 			<Router history={hashHistory}>
 				<Route path="/" component={App}>
-					<IndexRedirect to="/page" />
-					<Route path="/page" component={Home}/>
+					<IndexRoute component={Home}/>
 					<Route path="/about" component={MoreInfor}/>
-					<Route path="/list" component={PlayerPage} />
+					<Route path="/music" component={PlayerPage} />
+					<Route path="/blog" component={Blog} />
+					<Route path="/developer" component={Developer} />
+					<Route path="/download" component={Download} />
+					<Route path="/literature" component={Literature} />
+					<Route path="/recommend" component={Recomend} />
+					<Route path="/user" component={User} />
+					<Route path="/utterance" component={Uttearance} />
 					<Route path="/list" component={listPage} />
 				</Route>
 			</Router>
