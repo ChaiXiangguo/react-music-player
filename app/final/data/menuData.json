@@ -2,41 +2,49 @@
     {
     "url": "/download",
     "title": "下载中心",
+    "icon": "cart-arrow-down",
     "dec":""
   },
   {
     "url": "/user",
     "title": "用户中心",
+    "icon": "user-o",
     "dec":""
   },
   {
     "url": "/developer",
+    "icon": "cart-arrow-down",
     "title": "about me",
     "dec":""
   },
    {
     "url": "/utterance",
     "title": "留言",
+    "icon": "envelope-open-o",
     "dec":""
   },
   {
     "url": "/blog",
     "title": "博客",
+    "icon":"bold",
     "dec":""
   },
   {
     "url": "/music",
     "title": "音乐",
+    "icon": "music",
     "dec":""
   },
   {
     "url": "/recommend",
     "title": "精品推荐",
+    "icon":"slideshare",
     "dec":""
   },
   {
     "url": "/literature",
     "title": "文集",
+    "icon": "book",
     "dec":""
   }
 ]

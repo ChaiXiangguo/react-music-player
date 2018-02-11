@@ -3,7 +3,7 @@ import { Router, IndexRoute, Link, Route, browserHistory, hashHistory, IndexRedi
 import { MUSIC_LIST } from './config/config';
 import { randomRange } from './utils/util';
 let PubSub = require('pubsub-js');
-
+import Navi from './components/navi';
 import Home from './page/home';
 import PlayerPage from './page/player';
 import listPage from './page/list';
@@ -17,7 +17,6 @@ import Music from './page/music'
 import Recomend from './page/Recomend'
 import User from './page/user'
 import Uttearance from './page/Uttearance'
-console.log('-------------',MoreInfor,'------------', Blog,'---------------')
 let App = React.createClass({
 	componentDidMount() {
 		$("#player").jPlayer({
@@ -71,7 +70,8 @@ let App = React.createClass({
 		return {
 			musicList: MUSIC_LIST,
 			currentMusitItem: {},
-			repeatType: 'cycle'
+			repeatType: 'cycle',
+			showMenu: false,
 		}
 	},
 	playWhenEnd() {
@@ -113,19 +113,31 @@ let App = React.createClass({
 			currentMusitItem: item
 		});
 	},
+	startmenu() {
+		this.setState({
+			showMenu: !this.state.showMenu
+		})
+	},
+	onChildChanged(newState) {
+		this.setState({
+			showMenu: newState
+		});
+	},
 	render() {
 		return (
 			<div>
 				<nav className="title-box">
 					<ul className="menu-style">
 						<li>联系我</li>
-						<li>导航</li>
+						<li onClick={this.startmenu}>导航</li>
 					</ul>
+					<Navi callbackParent = {this.onChildChanged} selected={this.state.showMenu} />
 				</nav>
 				<div className="container">
 					{/* <Logo></Logo> */}
 					{React.cloneElement(this.props.children, this.state)}
 				</div>
+				<div className="out-menu" onClick={this.onChildChanged.bind(this, false)} hidden={!this.state.showMenu}></div> 
 			</div>
 		);
 	}
@@ -136,8 +148,8 @@ let Root = React.createClass({
 		return (
 			<Router history={hashHistory}>
 				<Route path="/" component={App}>
-					<IndexRoute component={Home}/>
-					<Route path="/about" component={MoreInfor}/>
+					<IndexRoute component={Home} />
+					<Route path="/about" component={MoreInfor} />
 					<Route path="/music" component={PlayerPage} />
 					<Route path="/blog" component={Blog} />
 					<Route path="/developer" component={Developer} />
