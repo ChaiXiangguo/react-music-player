@@ -1,20 +1,22 @@
 .showmenuStyle{
   position: absolute;
   top: 100px;
-  right: -10px;
+  right: -100px;
+  opacity: 0;
 }
 
 .hidemenuStyle{
   position: absolute;
   top: 200px;
   right: 240px;
+  opacity: 0.7
 }
 
 .circle-box {
   font-size: 13px;
   word-wrap:break-word;
   color: black;
-  transition: all 1s ease;
+  transition: all 1s linear;
 ul {
   position: absolute;
   top: 0;
@@ -24,7 +26,7 @@ ul {
 li {
   position: absolute;
   list-style: none;
-  transition: all 1s ease;
+  transition: all 1s linear;
 }
 
 span {
@@ -40,7 +42,7 @@ span {
 }
 li div {
   transform: translateX(180px);
-  transition: all 1s ease;
+  transition: all 1s linear;
 }
 
 .selected li:nth-child(1) span {
@@ -123,12 +125,16 @@ li div {
   transform: rotate(360deg)
 }
 
-span, .start-button {
+ span, .start-button {
   display: inline-block;
   height: 90px;
   width: 90px;
   background: rgba(255, 255, 255, 0.9);
   border-radius: 50%
+}
+span:hover,.start-button:hover {
+  background: #888;
+  opacity: 1;
 }
 
 .start-button {

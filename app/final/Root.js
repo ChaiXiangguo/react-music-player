@@ -1,5 +1,5 @@
 import React, { render } from 'react';
-import { Router, IndexRoute, Link, Route, browserHistory, hashHistory, IndexRedirect } from 'react-router';
+import { Router, IndexRoute, Link, Route,  hashHistory, IndexRedirect } from 'react-router';
 import { MUSIC_LIST } from './config/config';
 import { randomRange } from './utils/util';
 let PubSub = require('pubsub-js');
@@ -17,6 +17,7 @@ import Music from './page/music'
 import Recomend from './page/Recomend'
 import User from './page/user'
 import Uttearance from './page/Uttearance'
+var FontAwesome = require('react-fontawesome');
 let App = React.createClass({
 	componentDidMount() {
 		$("#player").jPlayer({
@@ -128,8 +129,7 @@ let App = React.createClass({
 			<div>
 				<nav className="title-box">
 					<ul className="menu-style">
-						<li>联系我</li>
-						<li onClick={this.startmenu}>导航</li>
+						<li onClick={this.startmenu}>导航 <FontAwesome name='navicon' size="lg" tag="i"></FontAwesome></li>
 					</ul>
 					<Navi callbackParent = {this.onChildChanged} selected={this.state.showMenu} />
 				</nav>
