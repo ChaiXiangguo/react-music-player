@@ -1,18 +1,112 @@
 .blue-section{
 	height: 400px;
-	background: rgb(33, 168, 165)
+	background: rgb(33, 168, 165);
+	padding: 50px;
+	h2{
+		text-align: center;
+		color:#FFF;
+		margin:20px auto;
+		font-size: 16px; 
+	};
+	.blue-name{
+		text-align: center;
+		color:#FFF;
+		font-size: 30px;
+		margin:20px auto;
+		width: 400px;
+		padding-bottom: 20px;
+		border-bottom:2px solid #219e94 
+	};
+	.rhombus-box {
+		width: 600px;;
+		margin:90px auto;
+		display: flex;
+		flex-wrap: nowrap;
+    justify-content:space-around;
+    align-items:center;
+		align-content:center;
+		color: rgb(30,228,229);
+		span{
+			display: inline-block;
+			border: 3px solid #219e94;
+			height: 80px;
+			width: 80px;
+			line-height:95px;
+			text-align: center;
+			transform: rotate(45deg);
+			cursor: pointer;
+		i	{
+			transform: rotate(-45deg)
+		}
+		}	
+	}
 }
 .gray-section1{
-	height: 350px;
-	background: rgb(42, 50, 59)
+	height: 400px;
+	background: rgb(42, 50, 59);
+	padding:10px 100px;
+	img{
+		height: inherit;
+	}
 }
 .gray-section2{
-	height: 350px;
-	background: rgb(38, 46, 55)
+	height: 400px;
+	background: rgb(38, 46, 55);
+	padding:10px 100px;
+	img{
+		float: right;
+		height: inherit;
+	}
 }
 .violet-section{
-	height: 600px;
+	height: 1000px;
 	background: rgb(82, 83, 145);
+	padding: 40px;
+	color: #FFF;
+	h2 {
+		margin: 0 auto;
+		width: 1000px;
+		text-align: center
+	};
+	hr {
+		width: 200px;
+		height: 3px;
+		background-color: rgb(75, 76, 138);
+		border: 0
+	};
+	.violet-title{
+		font-size:25px;
+	};
+	.violet-vice{
+		font-size:18px;
+	}
+	.list-box{
+		padding-top: 50px;
+		margin: 0 auto;
+		width: 1000px;
+		display: flex;
+		flex-wrap: wrap;
+    justify-content:space-around;
+    align-items:center;
+		align-content:center;
+		span {
+			display: inline-block;
+			width: 500px;
+			height: 400px;
+		};
+		span:nth-child(1) {
+			background: rgba(69, 71, 124, 0.2)
+		};
+		span:nth-child(2) {
+			background: rgba(69, 71, 124, 0.4)
+		};
+		span:nth-child(3) {
+			background: rgba(69, 71, 124, 0.6)
+		};
+		span:nth-child(4) {
+			background: rgba(69, 71, 124, 0.8)
+		};
+	}
 }
 .footer-section{
 	color:#FFF;
