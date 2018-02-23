@@ -1,0 +1,54 @@
+.music-list{
+  width: 700px;
+	margin:0 auto;
+  padding-top: 120px;
+  .search_input{
+    position: relative;
+    width: 298px;
+    height: 34px;
+    background: #FFF;
+    border: 1px solid #ccc;
+    line-height: 34px;
+    color: #666;
+    margin-bottom:20px; 
+    input {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 249px;
+      height: 24px;
+      line-height: 24px;
+      border: none;
+      margin-left: 14px;
+      padding: 5px 0;
+      color: #666;
+     };
+    .searh_btn{
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 34px;
+      height: 34px;
+      margin: 0;
+      border: 0;
+      padding: 0;
+      background: 0 0;
+      outline: 0;
+      cursor: pointer;
+  }
+  }
+}
+@media (min-width: 980px) {
+	.music-list-bac {
+    background-image: url(/static/images/musicList.jpg);
+		background-repeat:no-repeat;
+		background-position:center;
+		opacity:0.9;
+		position: absolute;
+		top:0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		z-index: -1;
+	}
+}

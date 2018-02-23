@@ -1,0 +1,86 @@
+.player-page {
+	width: 700px;
+	margin:0 auto;
+	padding-top: 120px;
+
+	.caption {
+		font-size: 16px;
+		color: rgb(152, 54, 47);
+	}
+
+	.cover {
+		width: 180px;
+		height: 180px;
+		margin-left: 20px;
+
+		img {
+			width: 180px;
+			height: 180px;
+			border-radius: 50%;
+		}
+	}
+	.volume-container {
+		position: relative;
+		left: 20px;
+		top: -3px;
+	}
+	.volume-container .volume-wrapper {
+		opacity: 0;
+		transition: opacity .5s linear;
+	}
+	.volume-container:hover .volume-wrapper {
+		opacity: 1;
+	}
+	.music-title {
+	    font-size: 25px;
+	    font-weight: 400;
+	    color: rgb(3, 3, 3);
+	    height: 36px;
+	    line-height: 36px;
+	}
+	.music-artist {
+		font-size: 15px;
+	    font-weight: 400;
+	    color: rgb(74, 74, 74);
+    }
+    .left-time {
+    	font-size: 14px;
+    	color: #999;
+    	font-weight: 400;
+    	width: 40px;
+    }
+    .icon {
+    	cursor: pointer;
+    }
+    .ml20 {
+    	margin-left: 20px;
+    }
+    .mt35 {
+    	margin-top: 35px;
+    }
+    .volume-wrapper {
+    	width: 60px;
+    	display: inline-block;
+    }
+}
+@media (max-width: 979px) {
+	.player-page {
+		width: calc(100% - 20px);
+		margin:0 auto;
+		padding-top: 30px;
+	}
+}
+@media (min-width: 980px) {
+	.music-bac {
+		background-image: url(/static/images/musicbac.jpg);
+		background-repeat:no-repeat;
+		background-position:center;
+		opacity:0.9;
+		position: absolute;
+		top:0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		z-index: -1;
+	}
+}

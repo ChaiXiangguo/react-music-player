@@ -5,8 +5,8 @@ import { randomRange } from './utils/util';
 let PubSub = require('pubsub-js');
 import Navi from './components/navi';
 import Home from './page/home';
-import PlayerPage from './page/player';
-import listPage from './page/list';
+import PlayerPage from './page/music';
+import listPage from './page/music/list';
 import Logo from './components/logo'
 import MoreInfor from './page/moreInfor'
 import Blog from './page/blog'
@@ -25,8 +25,6 @@ let App = React.createClass({
 			wmode: "window",
 			useStateClassSkin: true
 		});
-
-		// this.playMusic(this.state.musicList[0]);
 
 		$("#player").bind($.jPlayer.event.ended, (e) => {
 			this.playWhenEnd();
