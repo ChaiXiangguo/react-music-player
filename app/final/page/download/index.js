@@ -6,9 +6,11 @@ let Download = React.createClass({
         }
     },
     render() {
-        return(
-            <div>blog</div>
-        ) 
+        return (
+            <div>
+                <div className="down-bac"></div>
+            </div>
+        )
     }
 });
 

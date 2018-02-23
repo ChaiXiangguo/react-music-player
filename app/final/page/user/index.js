@@ -7,7 +7,9 @@ let User = React.createClass({
     },
     render() {
         return(
-            <div>blog</div>
+            <div>
+                <div className="user-bac user-img"></div>
+            </div>
         ) 
     }
 });

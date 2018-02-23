@@ -9,9 +9,10 @@ require('./list.less')
 let List = React.createClass({
   searchFun() {
     var _this = this
-    axios.get(`/song_search_v2?keyword=${encodeURI(this.state.value)}&page=2&userid=-1&clientver=&platform=WebFilter&&pagesize=20`).then(function (res) {
+    axios.get(`/song_search_v2?keyword=${encodeURI(this.state.value)}&page=1&userid=-1&clientver=&platform=WebFilter&&pagesize=20`).then(function (res) {
       _this.setState({
-        musicList: res.data.data.lists
+        musicList: res.data.data.lists,
+        total: res.data.data.total
       })
     }).catch(function (error) {
       console.log(error);
@@ -21,7 +22,10 @@ let List = React.createClass({
     return {
       value: '',
       musicList: this.props.musicList,
-      currentMusitItem: this.props.currentMusitItem
+      currentMusitItem: this.props.currentMusitItem,
+      defaultCurrent:1,
+      pageSize: 20,
+      total: 0
     };
   },
   handleChange: function (event) {
@@ -32,7 +36,8 @@ let List = React.createClass({
     var _this = this
     axios.get(`/song_search_v2?keyword=${encodeURI(this.state.value)}&page=${page}&userid=-1&clientver=&platform=WebFilter&&pagesize=20`).then(function (res) {
       _this.setState({
-        musicList: res.data.data.lists
+        musicList: res.data.data.lists,
+        total: res.data.data.total
       })
     }).catch(function (error) {
       console.log(error);
@@ -60,7 +65,7 @@ let List = React.createClass({
         <ul>
           {Items}
         </ul>
-        <Pagination defaultCurrent={1} pageSize={20} total={870} onChange={this.pageOnChange} hideOnSinglePage />
+        <Pagination defaultCurrent={this.state.defaultCurrent} pageSize={this.state.pageSize} total={this.state.total} onChange={this.pageOnChange} hideOnSinglePage />
         <div className="music-list-bac"></div>
       </div>
     );

@@ -7,8 +7,10 @@ let Blog = React.createClass({
     },
     render() {
         return(
-            <div>blog</div>
-        )   
+            <div>
+                <div className="blog-bac"></div>
+            </div>
+        )
     }
 });
 

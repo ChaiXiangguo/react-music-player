@@ -7,7 +7,9 @@ let Literature = React.createClass({
     },
     render() {
         return(
-            <div>blog</div>
+            <div>
+                <div className="book-bac"></div>
+            </div>
         ) 
     }
 });

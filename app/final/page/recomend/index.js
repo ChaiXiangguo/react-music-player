@@ -7,7 +7,9 @@ let Recoment = React.createClass({
     },
     render() {
         return(
-            <div>blog</div>
+            <div>
+                <div className="recomend-bac"></div>
+            </div>
         ) 
     }
 });

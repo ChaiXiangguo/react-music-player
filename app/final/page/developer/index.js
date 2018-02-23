@@ -7,7 +7,9 @@ let Developer = React.createClass({
     },
     render() {
         return(
-            <div>blog</div>
+            <div>
+                <div className="me-bac"></div>
+            </div>
         ) 
     }
 });

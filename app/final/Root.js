@@ -16,6 +16,8 @@ import Literature from './page/literature'
 import Music from './page/music'
 import Recomend from './page/Recomend'
 import User from './page/user'
+import signIn from './page/user/signin'
+import signUp from './page/user/signup'
 import Uttearance from './page/Uttearance'
 var FontAwesome = require('react-fontawesome');
 let App = React.createClass({
@@ -30,6 +32,7 @@ let App = React.createClass({
 			this.playWhenEnd();
 		});
 		PubSub.subscribe('PLAY_MUSIC', (msg, item) => {
+			console.log(item)
 			this.playMusic(item);
 		});
 		PubSub.subscribe('DEL_MUSIC', (msg, item) => {
@@ -122,17 +125,23 @@ let App = React.createClass({
 			showMenu: newState
 		});
 	},
+	pathFun(path, e) {
+		hashHistory.push(path)
+    e.stopepropagation
+	},
 	render() {
 		return (
 			<div>
 				<nav className="title-box">
 					<ul className="menu-style">
+					  <li onClick={this.pathFun.bind(this, '/')}>首页</li>
+					  <li onClick={this.pathFun.bind(this, '/signup')}>注册</li>
+					  <li onClick={this.pathFun.bind(this, '/signin')}>登录</li>
 						<li onClick={this.startmenu}>导航 <FontAwesome name='navicon' size="lg" tag="i"></FontAwesome></li>
 					</ul>
-					<Navi callbackParent = {this.onChildChanged} selected={this.state.showMenu} />
+					<Navi callbackParent = {this.onChildChanged} selected={this.state.showMenu}/>
 				</nav>
 				<div className="container">
-					{/* <Logo></Logo> */}
 					{React.cloneElement(this.props.children, this.state)}
 				</div>
 				<div className="out-menu" onClick={this.onChildChanged.bind(this, false)} hidden={!this.state.showMenu}></div> 
@@ -157,6 +166,8 @@ let Root = React.createClass({
 					<Route path="/user" component={User} />
 					<Route path="/utterance" component={Uttearance} />
 					<Route path="/list" component={listPage} />
+					<Route path="/signin" component={signIn} />
+					<Route path="/signup" component={signUp} />
 				</Route>
 			</Router>
 		);

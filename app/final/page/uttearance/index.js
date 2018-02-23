@@ -7,7 +7,9 @@ let Uttearance = React.createClass({
     },
     render() {
         return(
-            <div>blog</div>
+            <div>
+                <div className="uttearance-bac"></div>
+            </div>
         ) 
     }
 });

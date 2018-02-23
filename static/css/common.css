@@ -194,7 +194,7 @@
     background-size: 16px auto;    
     background-position: 0 -112px;
 }
-#root, .container{
+#root{
     height: 100%
 }
 .stage {
@@ -265,15 +265,22 @@
 .menu-style{
     float: right;
     line-height: 50px;
-    text-align: center
+    text-align: center;
+    padding-right:20px;
 }
+.menu-style a {
+    color:#FFF !important
+  }
 .menu-style li {
     display: inline-block;
     margin:0 10px; 
     line-height: 50px;
     text-align: center;
-    width: 150px;
+    width: 70px;
     cursor: pointer
+}
+.menu-style li:hover{
+    color: rgb(155, 153, 153)
 }
 .body-header{
     height: 100%;
@@ -354,3 +361,4 @@
     right: 0;
     z-index: 99
   }
+  
