@@ -9,6 +9,7 @@ import Row from 'antd/lib/row';
 import Col from 'antd/lib/col';
 import Select from 'antd/lib/select';
 import Tooltip from 'antd/lib/tooltip';
+import message from 'antd/lib/message';
 import 'antd/lib/form/style';
 import 'antd/lib/icon/style';
 import 'antd/lib/input/style';
@@ -18,19 +19,27 @@ import 'antd/lib/row/style';
 import 'antd/lib/col/style';
 import 'antd/lib/select/style';
 import 'antd/lib/tooltip/style';
+import 'antd/lib/message/style';
+import axios from 'axios'
+import {hashHistory} from 'react-router'
 const FormItem = Form.Item;
 
-let signUp = React.createClass( {
-    // getInitialState() {
-    //     return {
-    //      confirmDirty: false
-    //     }
-    // },
+let NormalLoginForm = React.createClass( {
+    getInitialState() {
+        return {
+         confirmDirty: false
+        }
+    },
     handleSubmit(e) {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
+                axios.post(`/api/user/register`,values).then(function (res) {
+                    hashHistory.push('/signin')
+                    message.info('注册成功！');
+                  }).catch(function (error) {
+                    console.log(error);
+                  });
             }
         });
     },
@@ -90,7 +99,7 @@ let signUp = React.createClass( {
             <div>
                 <div className="signin-box">
                     <Row type="flex" justify="space-around" align="middle">
-                        <Col span={4}>
+                        <Col span={6}>
                             <Form onSubmit={this.handleSubmit}>
                                 <FormItem
                                     {...formItemLayout}
@@ -98,47 +107,47 @@ let signUp = React.createClass( {
                                 >
                                     {getFieldDecorator('email', {
                                         rules: [{
-                                            type: 'email', message: 'The input is not valid E-mail!',
+                                            type: 'email', message: '请输入合法的邮箱地址',
                                         }, {
-                                            required: true, message: 'Please input your E-mail!',
+                                            required: true, message: '请输入您的邮箱!',
                                         }],
                                     })(
-                                        <Input />
+                                        <Input placeholder="请输入邮箱地址"/>
                                         )}
                                 </FormItem>
                                 <FormItem
                                     {...formItemLayout}
-                                    label="Password"
+                                    label="密码"
                                 >
                                     {getFieldDecorator('password', {
                                         rules: [{
-                                            required: true, message: 'Please input your password!',
+                                            required: true, message: '请输入您的密码!',
                                         }, {
                                             validator: this.checkConfirm,
                                         }],
                                     })(
-                                        <Input type="password" />
+                                        <Input type="password" placeholder="请输入密码"/>
                                         )}
                                 </FormItem>
                                 <FormItem
                                     {...formItemLayout}
-                                    label="Confirm Password"
+                                    label="确认密码"
                                 >
                                     {getFieldDecorator('confirm', {
                                         rules: [{
-                                            required: true, message: 'Please confirm your password!',
+                                            required: true, message: '请确认密码!',
                                         }, {
                                             validator: this.checkPassword,
                                         }],
                                     })(
-                                        <Input type="password" onBlur={this.handleConfirmBlur} />
+                                        <Input type="password" placeholder="请再次输入密码" onBlur={this.handleConfirmBlur} />
                                         )}
                                 </FormItem>
                                 <FormItem
                                     {...formItemLayout}
                                     label={(
                                         <span>
-                                            Nickname&nbsp;
+                                            昵称&nbsp;
                               <Tooltip title="What do you want others to call you?">
                                                 <Icon type="question-circle-o" />
                                             </Tooltip>
@@ -146,23 +155,23 @@ let signUp = React.createClass( {
                                     )}
                                 >
                                     {getFieldDecorator('nickname', {
-                                        rules: [{ required: true, message: 'Please input your nickname!', whitespace: true }],
+                                        rules: [{ required: true, message: '请输入您的昵称!', whitespace: true }],
                                     })(
-                                        <Input />
+                                        <Input placeholder="请输入您的昵称"/>
                                         )}
                                 </FormItem>
                                 <FormItem
                                     {...formItemLayout}
-                                    label="Phone Number"
+                                    label="手机号码"
                                 >
                                     {getFieldDecorator('phone', {
-                                        rules: [{ required: true, message: 'Please input your phone number!' }],
+                                        rules: [{ required: false, message: 'Please input your phone number!' }],
                                     })(
-                                        <Input addonBefore={prefixSelector} style={{ width: '100%' }} />
+                                        <Input addonBefore={prefixSelector} style={{ width: '100%' }} placeholder="请输入您的手机号"/>
                                         )}
                                 </FormItem>
                                 <FormItem {...tailFormItemLayout}>
-                                    <Button type="primary" htmlType="submit">Register</Button>
+                                    <Button type="primary" htmlType="submit">注册</Button>
                                 </FormItem>
                             </Form>
                         </Col>
@@ -172,8 +181,8 @@ let signUp = React.createClass( {
             </div>
         );
     }
-}
+})
 
-// const signUp = Form.create()(NormalLoginForm);
+const signUp = Form.create()(NormalLoginForm);
 
 export default signUp;

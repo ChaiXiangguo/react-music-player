@@ -26,6 +26,11 @@ new WebpackDevServer(webpack(config), {
             target: 'http://songsearch.kugou.com',
             pathRewrite: { '^/column': '/column' },
             changeOrigin: true
+        },
+        '/api': {
+            target: 'http://localhost:4000',
+            pathRewrite: { '^/column': '/column' },
+            changeOrigin: true
         }
     }
 }).listen(3000, 'localhost', function (err) {
