@@ -1,5 +1,6 @@
 import React from 'react';
 require('./style.less');
+let PubSub = require('pubsub-js');
 import Form from 'antd/lib/form';
 import Icon from 'antd/lib/icon';
 import Input from 'antd/lib/input';
@@ -27,11 +28,12 @@ let NormalLoginForm = React.createClass({
             if (!err) {
                 axios.post(`/api/user/login`, values).then(function (res) {
                     if (res.data.token) {
+                        PubSub.publish('LOGIN_SUCCESS', res.data);
                         document.cookie = `token=Bearer ${res.data.token}`
                         hashHistory.push('/')
                         message.info('登录成功！');
                     } else {
-                        if (res.data.code === '10000') {
+                        if (res.data.errCode === '10000') {
                             message.error('用户名不存在！');
                         } else {
                             message.error('密码错误！');
@@ -49,7 +51,7 @@ let NormalLoginForm = React.createClass({
             <div>
                 <div className="signin-box">
                     <Row type="flex" justify="space-around" align="middle">
-                        <Col span={4}>
+                        <Col>
                             <Form onSubmit={this.handleSubmit} className="login-form">
                                 <FormItem>
                                     {getFieldDecorator('nickname', {

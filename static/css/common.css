@@ -286,7 +286,7 @@
     height: 100%;
     width: 100%;
     min-width: 600px;
-    min-height: 900px;
+    min-height: 600px;
 }
 .title-box{
     position: fixed;
@@ -310,6 +310,11 @@
     z-index: 100px;
     background-color: rgba(0,0,0,0.2);
     border-radius: 15px;
+}
+.title-box .welcome-title {
+    color: #FFF;
+    display: inline-block;
+    margin: 10px 0 0 30px;
 }
 
 .banner-title{
@@ -343,6 +348,8 @@
   position: absolute;
   height: 100%;
   width: 100%;
+  min-width: 600px;
+  min-height: 600px;
   left: 0;
   top: 0;
   z-index:-1;
@@ -361,4 +368,6 @@
     right: 0;
     z-index: 99
   }
-  
+  .container{
+     height: 100% 
+  }

@@ -21,25 +21,33 @@ import 'antd/lib/select/style';
 import 'antd/lib/tooltip/style';
 import 'antd/lib/message/style';
 import axios from 'axios'
-import {hashHistory} from 'react-router'
+import { hashHistory } from 'react-router'
 const FormItem = Form.Item;
 
-let NormalLoginForm = React.createClass( {
+let NormalLoginForm = React.createClass({
     getInitialState() {
         return {
-         confirmDirty: false
+            confirmDirty: false
         }
     },
     handleSubmit(e) {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
-                axios.post(`/api/user/register`,values).then(function (res) {
-                    hashHistory.push('/signin')
-                    message.info('注册成功！');
-                  }).catch(function (error) {
+                axios.post(`/api/user/register`, values).then(function (res) {
+                    if (res.data.errCode) {
+                        if (res.data.errCode === '10002') {
+                            message.error('该昵称已被其他人使用，请重新更换昵称！');
+                        } else {
+                            message.error('系统错误');
+                        }
+                    } else {
+                        hashHistory.push('/signin')
+                        message.info('注册成功！');
+                    }
+                }).catch(function (error) {
                     console.log(error);
-                  });
+                });
             }
         });
     },
@@ -99,7 +107,7 @@ let NormalLoginForm = React.createClass( {
             <div>
                 <div className="signin-box">
                     <Row type="flex" justify="space-around" align="middle">
-                        <Col span={6}>
+                        <Col>
                             <Form onSubmit={this.handleSubmit}>
                                 <FormItem
                                     {...formItemLayout}
@@ -112,7 +120,7 @@ let NormalLoginForm = React.createClass( {
                                             required: true, message: '请输入您的邮箱!',
                                         }],
                                     })(
-                                        <Input placeholder="请输入邮箱地址"/>
+                                        <Input placeholder="请输入邮箱地址" />
                                         )}
                                 </FormItem>
                                 <FormItem
@@ -126,7 +134,7 @@ let NormalLoginForm = React.createClass( {
                                             validator: this.checkConfirm,
                                         }],
                                     })(
-                                        <Input type="password" placeholder="请输入密码"/>
+                                        <Input type="password" placeholder="请输入密码" />
                                         )}
                                 </FormItem>
                                 <FormItem
@@ -157,7 +165,7 @@ let NormalLoginForm = React.createClass( {
                                     {getFieldDecorator('nickname', {
                                         rules: [{ required: true, message: '请输入您的昵称!', whitespace: true }],
                                     })(
-                                        <Input placeholder="请输入您的昵称"/>
+                                        <Input placeholder="请输入您的昵称" />
                                         )}
                                 </FormItem>
                                 <FormItem
@@ -167,7 +175,7 @@ let NormalLoginForm = React.createClass( {
                                     {getFieldDecorator('phone', {
                                         rules: [{ required: false, message: 'Please input your phone number!' }],
                                     })(
-                                        <Input addonBefore={prefixSelector} style={{ width: '100%' }} placeholder="请输入您的手机号"/>
+                                        <Input addonBefore={prefixSelector} style={{ width: '100%' }} placeholder="请输入您的手机号" />
                                         )}
                                 </FormItem>
                                 <FormItem {...tailFormItemLayout}>

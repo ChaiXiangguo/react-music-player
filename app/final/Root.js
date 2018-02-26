@@ -22,6 +22,7 @@ import Uttearance from './page/Uttearance'
 var FontAwesome = require('react-fontawesome');
 let App = React.createClass({
 	componentDidMount() {
+		console.log(this.state)
 		$("#player").jPlayer({
 			supplied: "mp3",
 			wmode: "window",
@@ -32,7 +33,6 @@ let App = React.createClass({
 			this.playWhenEnd();
 		});
 		PubSub.subscribe('PLAY_MUSIC', (msg, item) => {
-			console.log(item)
 			this.playMusic(item);
 		});
 		PubSub.subscribe('DEL_MUSIC', (msg, item) => {
@@ -60,6 +60,12 @@ let App = React.createClass({
 				repeatType: repeatList[index]
 			});
 		});
+		PubSub.subscribe('LOGIN_SUCCESS', (msg, item) => {
+			 this.setState({
+				nickname: item.nickname,
+				id: item._id
+			 })
+		});
 	},
 	componentWillUnmount() {
 		PubSub.unsubscribe('PLAY_MUSIC');
@@ -67,6 +73,7 @@ let App = React.createClass({
 		PubSub.unsubscribe('CHANAGE_REPEAT');
 		PubSub.unsubscribe('PLAY_NEXT');
 		PubSub.unsubscribe('PLAY_PREV');
+		PubSub.unsubscribe('LOGIN_SUCCESS');
 	},
 	getInitialState() {
 		return {
@@ -74,6 +81,8 @@ let App = React.createClass({
 			currentMusitItem: {},
 			repeatType: 'cycle',
 			showMenu: false,
+			nickname: '',
+			id: ''
 		}
 	},
 	playWhenEnd() {
@@ -133,10 +142,11 @@ let App = React.createClass({
 		return (
 			<div>
 				<nav className="title-box">
+					<span className="welcome-title" hidden={!this.state.nickname}>欢迎 {this.state.nickname}访问guoger的博客</span>	
 					<ul className="menu-style">
 					  <li onClick={this.pathFun.bind(this, '/')}>首页</li>
-					  <li onClick={this.pathFun.bind(this, '/signup')}>注册</li>
-					  <li onClick={this.pathFun.bind(this, '/signin')}>登录</li>
+					  <li hidden={this.state.nickname} onClick={this.pathFun.bind(this, '/signup')}>注册</li>
+					  <li hidden={this.state.nickname} onClick={this.pathFun.bind(this, '/signin')}>登录</li>
 						<li onClick={this.startmenu}>导航 <FontAwesome name='navicon' size="lg" tag="i"></FontAwesome></li>
 					</ul>
 					<Navi callbackParent = {this.onChildChanged} selected={this.state.showMenu}/>
